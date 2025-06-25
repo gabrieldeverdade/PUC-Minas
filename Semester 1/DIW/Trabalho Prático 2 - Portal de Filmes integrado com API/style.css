@@ -1,0 +1,993 @@
+html {
+  height: 100%;
+  overflow-x: hidden !important;
+}
+.destaques{ overflow-x: scroll; }
+.destaques #card1{ margin: 10px; left: 0;}
+.card{
+  padding: 20px;
+  left: 50px;
+  margin: 0 auto;
+  display: flex;
+}
+a #buttonc1{ float: right; bottom: 0!important;}
+.card img{ padding: 5px; float: none; }
+.footer_hide{display: none;}
+.footer_semi{display: none;}
+body,
+main,
+ul,
+li,
+p,
+section,
+article,
+aside {
+  margin: 0px;
+  padding: 0px;
+  font-family: 'Poppins', sans-serif;
+}
+.searchbar{ z-index: 000;}
+/*menu toggle*/
+/*menu*/
+#menuToggle {
+  display: none;
+}
+.menu-icon {
+  display: none;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  font-weight: bolder;
+  text-align: center;
+  padding: 10px;
+  text-decoration: none;
+  font-size: 18px;
+  margin-top: 50px;
+  margin-left: 10px;
+  overflow-wrap: normal;
+}
+
+li a:hover {
+  background-color: #111111;
+}
+
+h3.filme {
+  display: none;
+}
+
+button.btn {
+  float: right;
+  background-color: rgb(1, 107, 156);
+  color: white;
+  margin: 15px;
+}
+
+/*search bar*/
+.searchbar {
+  margin-bottom: 10px;
+  margin-top: 0px;
+  height: 45px;
+  background-color: #2525259c;
+  border-radius: 30px;
+  padding: 3px;
+  align-content: right !important;
+  margin-left: 30px;
+}
+.search_input {
+  color: white;
+  border: 0;
+  outline: 0;
+  background: none;
+  width: 0;
+  caret-color: transparent;
+  line-height: 20px;
+  transition: width 0.2s linear;
+}
+.searchbar:hover > .search_input {
+  padding: 0 20px;
+  width: 150px;
+  height: 35px;
+  caret-color: rgb(255, 255, 255);
+  transition: width 0.4s linear;
+}
+.searchbar:hover > .search_icon {
+  background: white;
+  color: #000000;
+}
+.search_icon {
+  height: 40px;
+  width: 40px;
+  float: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: white;
+  text-decoration: none;
+}
+
+/*RATING CARDS*/
+
+.block-text {
+  color: #ffc400;
+  font-size: 14px;
+  margin-top: 10px;
+  padding: 10px 10px;
+  text-align: center;
+}
+.block-text a {
+  color: #030303;
+  font-size: 25px;
+  font-weight: bold;
+  line-height: 5px;
+  text-decoration: none;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+.block-text p {
+  color: #000000;
+  font-family: Georgia;
+  font-style: italic;
+  line-height: 20px;
+  text-align: center;
+  margin: 5px;
+  padding: 5px;
+}
+
+.block {
+  display: block;
+}
+.zmin {
+  z-index: 1;
+}
+.ab {
+  position: absolute;
+}
+.person-text {
+  padding: 15px 0 0;
+  text-align: center;
+  z-index: 2;
+}
+.person-text a {
+  color: #000000;
+  display: block;
+  font-size: 14px;
+  margin-top: 3px;
+  text-decoration: underline;
+  font-weight: bold;
+}
+.person-text i {
+  color: rgb(0, 0, 0);
+  font-family: Georgia;
+  font-size: 13px;
+}
+.rel {
+  position: relative;
+}
+
+/*Media Queries*/
+@media screen and (max-width: 600px) {
+  /*header*/
+  .header {
+    display: absolute;
+    padding: 15px;
+    margin-bottom: 30px;
+    text-align: right;
+    background-image: url(Imagens/fundo.png);
+    background-size: cover;
+    background-position: 0px -10px;
+    position: fixed;
+    top: 0px;
+    left: -22px;
+    width: 100%;
+    height: 150px;
+    z-index: 999;
+    background-repeat: no-repeat;
+  }
+  .logo_header {
+    width: 200px;
+    padding-bottom: 20px;
+  }
+
+  .header ul {
+    display: absolute;
+    width: 100%;
+  }
+  .searchbar {
+    display: none;
+  }
+
+  /*menu*/
+  .menuT {
+    display: flex;
+    position: fixed;
+    flex-wrap: wrap;
+    align-content: center;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 0%;
+    background-color: rgba(0, 69, 90, 0.815);
+    overflow: hidden;
+    -webkit-transition: height 0.3s;
+    -moz-transition: height 0.3s;
+    -ms-transition: height 0.3s;
+    -o-transition: height 0.3s;
+    transition: height 0.3s;
+    left: -25px;
+  }
+  .menuT li {
+    display: block;
+    width: 100%;
+    margin-left: 0px;
+    margin-bottom: 25px;
+  }
+  .menuT li a {
+    display: block;
+    text-align: center;
+    width: 100%;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+  }
+  .menu-icon {
+    width: 50px;
+    height: inherit;
+    display: block;
+    position: absolute;
+    top: 15px;
+    right: 30px;
+    line-height: 60px;
+    color: white;
+    z-index: 99999;
+  }
+  #menuToggle:checked ~ label.menu-icon i:nth-child(2) {
+    display: block;
+  }
+  #menuToggle:checked ~ label.menu-icon i:first-child {
+    display: none;
+  }
+  #menuToggle:not(:checked) ~ label.menu-icon i:first-child {
+    display: block;
+  }
+  #menuToggle:not(:checked) ~ label.menu-icon i:nth-child(2) {
+    display: none;
+  }
+  #menuToggle:checked ~ ul.menuT {
+    height: 100%;
+  }
+  .menu-icon i {
+    font-size: 2em;
+  }
+
+  /*body*/
+  /*titulos de seções*/
+  h1.lançamento {
+    padding-top: 150px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+  }
+  h1.destaque,
+  h1.avaliação,
+  h1.makingof,
+  h1.novidade,
+  .sobre h1 {
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 50px;
+  }
+  .editorial,
+  .redes h1 {
+    display: none;
+  }
+  h3.filme {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.178);
+    margin-bottom: 0px;
+  }
+  .redes .icones {
+    font-size: 2em;
+    height: inherit;
+    color: rgb(17, 17, 17);
+    position: absolute;
+    right: 5%;
+  }
+  .sobre p {
+    text-align: center;
+  }
+
+  /*destaque*/
+  .destaques {
+    display: flex;
+    overflow: scroll;
+  }
+  .destaques > div {
+    flex: 1 0 300px;
+    margin: 0 10px;
+  }
+  #buttonc1,
+  #buttonc2,
+  #buttonc3,
+  #buttonc4 {
+    float: right;
+    background-color: white;
+    color: rgb(0, 72, 180);
+  }
+  .destaques h5 {
+    font-weight: bold;
+    font-size: 17px;
+  }
+  #categorias {
+    margin: 15px;
+  }
+  #categorias.dropdown-item {
+    position: absolute !important;
+    z-index: 998px;
+  }
+
+  /*avaliações*/
+  #av2,
+  #av3 {
+    display: none;
+  }
+  #av1 > div {
+    display: block;
+    max-width: 400px;
+    padding: 10px;
+    margin: 0 auto !important;
+  }
+
+  /*makingof*/
+  .makingoff {
+    width: 70%;
+    margin: 0 auto;
+  }
+  .makingoff .card {
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  #videoM {
+    height: 250px;
+  }
+  .card:nth-child(2) {
+    display: none;
+  }
+  #mf4,
+  #mf5 {
+    display: none;
+  }
+
+  /*novidades*/
+  .grid .novidades {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    max-width: 800px;
+    padding: 10px;
+    margin: 0 auto;
+    grid-gap: 20px;
+    font-size: 15px;
+  }
+  .novidades img {
+    width: 160px;
+    padding-top: 10px;
+    margin: 0 auto;
+  }
+  #CardN {
+    align-content: center;
+    text-align: center;
+    max-height: 550px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    margin: 0 auto;
+  }
+  .novidades p {
+    padding: 20px;
+  }
+  .novidades h5 {
+    font-weight: bold;
+    font-size: 18px;
+  }
+  .footer_full{display: none;}
+  .footer_semi{display: none;}
+  /*rodapé*/
+  .footer_hide {
+    align-items: center;
+    font-size: 12px;
+    background-image: url(Imagens/background_footer.jpg);
+    background-size: cover;
+    background-position: 0px -150px;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    padding-left: 10px;
+    bottom: 0px;
+    background-repeat: no-repeat;
+  }
+  .logo_footer {
+    align-self: center;
+    width: 110px;
+    margin-left: 30px;
+  }
+}
+
+@media screen and (min-width: 601px) and (max-width: 1023px) {
+  /*header*/
+  .header {
+    display: absolute;
+    padding: 15px;
+    margin-bottom: 30px;
+    text-align: right;
+    background-image: url(Imagens/background_footer.jpg);
+    background-size: cover;
+    background-position: 0px -90px;
+    color: white;
+    left: -22px;
+    width: 100%;
+    height: 200px;
+    top: 0px;
+    background-repeat: no-repeat;
+  }
+  header.header img.logo_header {
+    width: 250px;
+    align-self: center;
+    padding-bottom: 20px;
+    float: left;
+  }
+  #pesquisa {
+    display: block;
+    position: absolute;
+    top: 120px;
+    left: 5px;
+  }
+
+  /*MenuToggle*/
+  .header ul {
+    display: absolute;
+    width: 100%;
+  }
+  /*menu*/
+  .menuT {
+    display: flex;
+    position: fixed;
+    flex-wrap: wrap;
+    align-content: center;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 0%;
+    background-color: rgba(0, 69, 90, 0.815);
+    overflow: hidden;
+    -webkit-transition: height 0.3s;
+    -moz-transition: height 0.3s;
+    -ms-transition: height 0.3s;
+    -o-transition: height 0.3s;
+    transition: height 0.3s;
+    left: -25px;
+    width: 100%;
+  }
+  .menuT li {
+    display: block;
+    width: 100%;
+    margin-left: 0px;
+    margin-bottom: 25px;
+  }
+  .menuT li a {
+    display: block;
+    text-align: center;
+    width: 100%;
+    color: white;
+    font-weight: bold;
+    font-size: 25px;
+  }
+  .menu-icon {
+    width: 50px;
+    height: inherit;
+    display: block;
+    position: absolute;
+    top: 15px;
+    right: 30px;
+    line-height: 60px;
+    color: white;
+    z-index: 99999;
+  }
+  #menuToggle:checked ~ label.menu-icon i:nth-child(2) {
+    display: block;
+  }
+  #menuToggle:checked ~ label.menu-icon i:first-child {
+    display: none;
+  }
+  #menuToggle:not(:checked) ~ label.menu-icon i:first-child {
+    display: block;
+  }
+  #menuToggle:not(:checked) ~ label.menu-icon i:nth-child(2) {
+    display: none;
+  }
+  #menuToggle:checked ~ ul.menuT {
+    height: 100%;
+  }
+  .menu-icon i {
+    font-size: 2em;
+  }
+
+  /*body*/
+  /*titulos de seções*/
+  h1.lançamento {
+    padding: 5px;
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+  }
+  h1.destaque,
+  h1.avaliação,
+  h1.makingof,
+  h1.novidade {
+    display: absolute;
+    font-weight: bold;
+    text-align: center;
+    font-size: 25px;
+  }
+  .sobre h1,
+  .redes h1,
+  .editorial h1 {
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+    padding-right: 20px;
+  }
+
+  .lançamentos p {
+    font-size: 15px;
+    display: block;
+  }
+  .lançamentos {
+    margin: 40px;
+  }
+  .titulo_filme {
+    font-weight: bold;
+  }
+
+  .sobre p {
+    text-align: center;
+  }
+
+  /*destaque*/
+  .destaques {
+    display: flex;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    margin: 15px;
+  }
+  .destaques > div {
+    flex: 1 0 400px;
+    margin: 5px;
+    height: auto;
+  }
+  #buttonc1,
+  #buttonc2,
+  #buttonc3,
+  #buttonc4 {
+    float: right;
+    background-color: white;
+    color: rgb(0, 72, 180);
+  }
+  .destaques h5 {
+    font-weight: bold;
+    font-size: 20px;
+  }
+  #categorias {
+    margin: 15px;
+  }
+  #card1,
+  #card2,
+  #card3,
+  #card4 {
+    padding: 0px;
+  }
+
+  /*avaliações*/
+  .container {
+    display: flex;
+  }
+  #avaliação .card-title {
+    align-content: center;
+    margin: 0 auto;
+    height: auto;
+    width: 500px;
+  }
+
+  /*makingof*/
+  .makingoff {
+    width: 590px;
+    margin: 0 auto;
+    font-size: 18px;
+  }
+  .makingoff .card {
+    text-align: center;
+    margin: auto;
+    margin-bottom: 10px;
+  }
+  #videoM {
+    height: 350px;
+  }
+  #mf4,
+  #mf5 {
+    display: none;
+  }
+  /*novidades*/
+  .novidades {
+    display: block;
+    margin: 0 auto;
+    font-size: 15px;
+  }
+  .novidades img {
+    width: 300px;
+    padding-top: 10px;
+    margin: 0 auto;
+  }
+  #CardN {
+    align-content: center;
+    text-align: center;
+    max-height: 550px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    margin: 0 auto;
+  }
+  .novidades p:first-of-type {
+    top: 0px !important;
+    padding-left: 40px;
+    padding-right: 45px;
+  }
+  .novidades h5 {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  /*infos*/
+  .grid2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+    margin: 0 auto;
+    max-width: 800px;
+    padding: 20px;
+  }
+  .sobre {
+    grid-row: 1 / 3;
+    grid-column: 1;
+    text-align: center;
+  }
+  .editorial {
+    grid-row: 1;
+    grid-column: 2;
+    text-align: center;
+  }
+  .redes {
+    grid-row: 2 / 3;
+    grid-column: 2;
+    text-align: center;
+  }
+  .editorial h1 {
+    padding-left: 30px;
+  }
+  .redes .icones {
+    font-size: 2em;
+    height: inherit;
+    padding-right: 25px;
+    color: rgb(17, 17, 17);
+  }
+  .footer_hide{display: none;}
+  .footer_full{display: none;}
+  /*rodapé*/
+  .footer_semi {
+    align-items: center;
+    font-size: 12px;
+    background-image: url(Imagens/background_footer.jpg);
+    background-size: cover;
+    background-position: 0px -150px;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    padding-left: 10px;
+    bottom: 0px;
+    background-repeat: no-repeat;
+  }
+  .logo_footer {
+    margin-left: 50px;
+    width: 120px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  h3.filme {
+    display: block !important;
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.178);
+    margin-bottom: 0px;
+  }
+  .lançamentos {
+    margin: 0px;
+  }
+  #avaliação {
+    margin-bottom: 100px;
+  }
+  #av3,
+  #av2 {
+    display: none;
+  }
+  #av1 {
+    max-width: 400px;
+    padding: 10px;
+    margin: 0 auto !important;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  /*header*/
+  .header {
+    display: absolute;
+    padding: 15px;
+    margin-bottom: 30px;
+    text-align: right;
+    background-image: url(Imagens/background_footer.jpg);
+    background-size: cover;
+    background-position: 0px -5px;
+    color: white;
+    width: 100%;
+    height: 250px;
+    top: 0px;
+    background-repeat: no-repeat;
+  }
+  header.header img.logo_header {
+    width: 250px;
+    align-self: center;
+    padding-top: 20px;
+    float: left;
+  }
+  #pesquisa {
+    display: block;
+    position: absolute;
+    top: 10px;
+    left: 5px;
+  }
+  #navbarNav .navbar-nav {
+    display: inline;
+    font-weight: bolder;
+    font-size: 20px;
+    padding-top: 40px;
+  }
+
+  /*body*/
+  /*titulos de seções*/
+  h1.lançamento {
+    padding: 5px;
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+  }
+  h1.destaque,
+  h1.avaliação,
+  h1.makingof,
+  h1.novidade {
+    display: absolute;
+    font-weight: bold;
+    text-align: center;
+    font-size: 25px;
+    padding-top: 10px;
+  }
+  .sobre h1,
+  .redes h1,
+  .editorial h1 {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .lançamentos p {
+    font-size: 20px;
+    display: block;
+  }
+  .lançamentos {
+    margin: 5%;
+  }
+  .titulo_filme {
+    font-weight: bold;
+  }
+  .sobre p {
+    text-align: center;
+  }
+
+  /*destaque*/
+  .destaques {
+    display: flex;
+    margin: 10px;
+    top: 0px;
+    margin-bottom: 150px;
+  }
+  .destaques > div {
+    flex: 1 0 200px;
+    margin: 5px;
+    height: auto;
+  }
+  .destaques p {
+    font-size: 16px;
+    text-align: center;
+  }
+  #buttonc1,
+  #buttonc2,
+  #buttonc3,
+  #buttonc4 {
+    float: right;
+    background-color: white;
+    color: rgb(0, 72, 180);
+    margin-top: 10px;
+  }
+  .destaques h5 {
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+  }
+  #categorias {
+    margin: 15px;
+  }
+  #card,
+  #card2,
+  #card3,
+  #card4 {
+    padding: 0px;
+  }
+
+  /*avaliações*/
+  .container {
+    display: flex;
+  }
+  #avaliação .card-title {
+    align-content: center;
+    margin: 0 auto;
+    width: 700px;
+    font-size: 15px;
+    padding: 0px;
+  }
+  #avaliação p,
+  #avaliação a {
+    font-size: 18px;
+  }
+
+  /*makingof*/
+  #mf1,
+  #mf2,
+  #mf3,
+  #mf4,
+  #mf5 {
+    text-align: center;
+    width: 300px;
+    height: auto;
+    margin: 20px;
+    font-size: 18px;
+  }
+  .flex {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    margin: 0 auto;
+  }
+  #videoM {
+    height: 150px;
+  }
+
+  /*grid*/
+  .grid {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-gap: 100px;
+    margin: 0 auto;
+    max-width: 1000px;
+    padding: 10px;
+  }
+  .grid1 {
+    grid-column: 1;
+    font-size: 15px;
+    padding-bottom: 20px;
+  }
+  .grid2 {
+    text-align: center;
+    margin-top: 90px;
+    padding-right: 0px;
+  }
+
+  /*novidades*/
+  .novidades img {
+    width: 150px;
+    padding-top: 10px;
+    margin: 0 auto;
+  }
+  #CardN {
+    width: 400px;
+    align-content: center;
+    text-align: center;
+    height: 550px;
+    overflow-x: hidden;
+    margin: 0 auto;
+  }
+  .novidades h5 {
+    font-size: 15px;
+    font-weight: bold;
+  }
+  .novidades p {
+    padding: 15px;
+  }
+
+  /*infos*/
+  .redes .icones {
+    font-size: 2em;
+    height: inherit;
+    color: rgb(17, 17, 17);
+  }
+  .sobre,
+  .editorial,
+  .redes {
+    padding-top: 25px;
+    font-size: 15px;
+  }
+
+  /*rodapé*/
+  .footer_full {
+    align-items: center;
+    font-size: 14px;
+    background-image: url(Imagens/background_footer.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 0px -400px;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    padding-left: 10px;
+    bottom: 0px;
+    height: 110px;
+  }
+  .logo_footer {
+    margin-left: 60px;
+    width: 120px;
+  }
+}
+
+#descricaopop {
+  right: 70px;
+  left: 400px;
+  margin: 100px;
+  top: 0;
+  background-color: rgba(35, 74, 92, 0);
+  color: black;
+}
+#populares img {
+  margin: 30px;
+  margin-left: 70px;
+}
+#descricaopoptxt {
+  color: black !important;
+  padding: 40px;
+}
