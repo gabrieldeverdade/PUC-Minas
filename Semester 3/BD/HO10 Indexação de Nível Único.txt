@@ -1,0 +1,91 @@
+Considere que o ponteiro para blocos de disco tem 16B, que o tamanho de bloco de disco é de 2KB, que os arquivos possuem registros de tamanho fixo, não espalhados e que eles têm a seguinte configuração de número de registros e tamanhos de campos:
+
+Atores (10.000 registros) → Codigo (16B), Nome (160B)
+Clientes (100.000 registros) → CPF (11B), Nome (160B), Endereco (200B), Telefone (16B), DataNascimento (12B), Sexo (1B)
+Filmes (2.000.000 registros) → Codigo (16B), Nome (160B), Genero (80B)
+Funcionarios (3.500 registros) → CPF (11B), Nome (160B)
+Midias (10.000.000 registros) → Identificador (24B), Tipo (8B), PrecoDiaria (24B)
+Aluguel (20.000.000 registros)  → DataLocacao (12B), DataDevolucao (10B), ValorPagar (24B)
+Pagamentos (50.000.000 registros) → Codigo (48B), Data (12B), Valor (24B)
+AtoresEmFilmes (1.000.000 registros)
+Observem a existência de chaves estrangeiras que obviamente devem ser consideradas como campos integrantes dos arquivos.
+
+Resposta
+
+Atores: F = 2048/32= 64
+
+B = 10000/64= 157
+
+U = 2048 - (32*64) = 0
+
+Espaço = 157*2048= 321536B = 314 KB
+
+Acessos = teto(log2 157) = 8  
+
+Clientes: F = 2048/27 = 75
+
+B = 100000/75 = 1334
+
+U = 2048 - (27*75) = 23B
+
+Espaço = 1334*2048=2732032B=2668KB=2.6MB
+
+Acessos = teto(log2 1334) = 11
+
+Filmes: F = 2048-32 = 64
+
+B = 2000000/64 = 31250
+
+U = 2048 - 32*64 = 0
+
+Espaço = 31250*2048= 64000000B=62500KB=61,03MB
+
+Acessos = teto(log 2 31250) = 15
+
+Funcionários: F = 2048/27 = 75
+
+B = 3500/75 = 47
+
+U = 2048 - 75*27 = 23B
+
+Espaço = 47*2048=96256B=94KB
+
+Mídias: F = 2048/40 = 51
+
+B = 10000000/51 = 196079
+
+U = 2048 - 51*40 = 8B
+
+Espaço = 196079*2KB=392158KB=382.96MB
+
+Acessos = teto(log2 196079) = 18
+
+Aluguel: F = 2048/63 = 32
+
+B = 20000000/32 = 625000
+
+U = 2048 - 32*63 = 32B
+
+Espaço = 625000*2KB=1250000KB=1220.7MB=1.19GB
+
+Acessos = teto(log2 625000) = 20
+
+Pagamentos: F = 2048/64 = 32
+
+B = 50000000/32= 1562500
+
+U = 2048 - 64*32 = 0
+
+Espaço = 1525000*2KB=3050000KB=2978.51MB=2.91GB
+
+Acessos = teto(log2 1562500) = 21
+
+AtoresEmFilmes: F = 2048/48 = 42
+
+B = 1000000/42 = 23809
+
+U = 2048 - 48*42 = 32B
+
+Espaço = 23809*2KB = 47618KB=46.5MB
+
+Acessos = teto(log2 23809) = 16

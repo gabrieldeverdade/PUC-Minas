@@ -1,0 +1,45 @@
+Especificar as seguintes consultas em SQL para recuperar os dados em um banco de dados relacional, considerando o conjunto de dados (dataset) denominado IMDB-sample disponível na calculadora RelaXLinks to an external site.:
+
+Projetar o primeiro nome e o último nome dos atores de sexo feminino;
+Projetar o nome dos filmes com ano superior à 1999;
+Projetar o nome do filme e o nome do diretor de cada filme;
+Projetar o nome do filme, nome do ator e o papel que cada ator teve no filme para filmes com ranking acima da nota 6;
+Projetar o nome do diretor e o número de filmes que cada diretor dirigiu;
+Projetar o gênero e o número de filmes de cada gênero; 
+Projetar o gênero, o ranking (nota) médio, mínimo e máximo dos filmes do gênero.
+
+Respostas
+
+Hands on 7
+1 - select first_name,last_name
+from actors
+where gender='F'
+
+2 - select name
+from movies
+where year>1999
+
+3 - select movies.name, directors.first_name,directors.last_name
+from movies inner join movies_directors 
+on movies.id=movies_directors.movie_id
+inner join directors on movies_directors.director_id=directors.id
+
+4 - select movies.name,actors.first_name,actors.last_name,roles.role
+from movies inner join roles
+on movies.id=roles.movie_id
+inner join actors on actors.id=roles.actor_id
+where movies.rank>6
+
+5 - select directors.first_name, directors.last_name,count(movies.id) as vasco
+from directors inner join movies_directors
+on directors.id=movies_directors.director_id
+inner join movies on movies.id=movies_directors.movie_id
+group by directors.first_name,directors.last_name
+
+6 - select movies_genres.genre, count(movies_genres.movie_id) as Quantidade
+from movies_genres
+group by movies_genres.genre
+
+7 - select movies_genres.genre, avg(movies.rank) as media, min(movies.rank) as minimo,max(movies.rank) as maximo
+from movies inner join movies_genres on movies_genres.movie_id=movies.id
+group by movies_genres.genre

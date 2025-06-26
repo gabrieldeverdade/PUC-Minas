@@ -1,0 +1,28 @@
+Especificar as seguintes consultas em álgebra relacional para recuperar os dados em um banco de dados relacional, considerando o conjunto de dados (dataset) denominado IMDB-sample disponível na calculadora RelaXLinks to an external site.:
+
+Projetar o primeiro nome e o último nome dos atores de sexo feminino;
+Projetar o nome dos filmes com ano superior à 1999;
+Projetar o nome do filme e o nome do diretor de cada filme;
+Projetar o nome do filme, nome do ator e o papel que cada ator teve no filme para filmes com ranking acima da nota 6;
+Projetar o nome do diretor e o número de filmes que cada diretor dirigiu;
+Projetar o gênero e o número de filmes de cada gênero; 
+Projetar o gênero, o ranking (nota) médio, mínimo e máximo dos filmes do gênero.
+
+% Produto
+O aluno deve entregar um texto contendo a solução para o problema descrito anteriormente.
+
+% Respostas
+
+1. πfirst_name, last_name(σgender='F'(actors))
+
+2. πname(σyear>1999(movies))
+
+3. π movies.name, directors.first_name, directors.last_name (σ movies.id = movies_directors.movie_id (movies x (σ movies_directors.director_id = director_id (directors x movies_directors))))
+
+4. π movies.name, actors.first_name, actors.last_name (σ (movies.id = roles.movie_id ∧ rank > 6)(movies x (σ (actors.id = roles.actor_id)(actors x roles))))
+
+5. γ directors.first_name, directors.last_name; count(movies_directors.movie_id)→ NMovies (σ directors.id = movies_directors.director_id (directors x movies_directors))
+
+6. γ movies_genres.genre; count(movies_genres.movie_id)→ NMovies (σ movies.id = movies_genres.movie_id (movies x movies_genres))
+
+7. A = movies ⨝ id = movie_id movies_genres B = γ genre; count(*) → Total, AVG(rank) → Media, MIN(rank) → Minimo, MAX(rank) → Maximo (A) π genre, Total, Media, Minimo, Maximo (B)

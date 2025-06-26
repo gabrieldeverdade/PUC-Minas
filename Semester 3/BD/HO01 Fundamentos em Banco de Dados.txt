@@ -1,0 +1,65 @@
+Responder as seguintes perguntas:
+
+O que é um sistema de banco de dados (SBD)?
+Do que um SBD é composto?
+Como usuários e aplicações interagem com um SBD?
+O que é um banco de dados (BD)? Cite um exemplo de um BD, indicando o link onde seja possível encontrá-lo.
+Quais são as propriedades de um BD?
+Quais são as etapas de um projeto de BD?
+O que é um sistema gerenciador de banco de dados (SGBD)?
+Quais são as propriedades de um SGBD?
+Indique situações em que o uso de SGBD pode se mostrar inadequado.
+O que é um modelo de dados? 
+Em relação ao nível de abstração, quais são os tipos de modelos de dados?
+O que é um Esquema de BD?
+O que é uma Instância de BD?
+Quais as vantagens de se adotar uma Arquitetura de Três Esquemas para implementar um BD?
+Quais níveis existem em uma Arquitetura de Três Esquemas?
+O que é Mapeamento em uma Arquitetura de Três Esquemas?
+O que é Independência de Dados e qual sua importância para um SBD?
+O que é uma Linguagem de Consulta?
+Cite as linguagens incorporadas na linguagem SQL.
+
+<!-- Respostas -->
+
+Gabriel Azevedo Fernandes
+
+Hands-On 1
+
+1- É um conjunto de informações em que os dados são organizados, normalmente eles são armazenados na linguagem SQL. Um banco de dados também tem a possibilidade de ser manual ou computadorizado.
+
+2- Um SDB (Sistema de Banco de Dados) é composto de dados, hardware, software e usuários.
+
+3- Os usuários interagem com um banco de dados usando as informações que ele disponibiliza para realizar seus cadastros, e as aplicações são usadas para acrescentar novas informações ao banco.
+
+4- Banco de dados é um local em que encontramos informações e dados de maneira organizada. Exemplo :  o Oracle, que pode ser acessado pelo seu respectivo site: https://www.oracle.com/br/database/Links to an external site.
+
+5- Finalidade, realidade, coerência e compartilhamento, significando construção com propósito específico, representação do mundo real, coerência lógica da coleção e compartilhamento de dados, respectivamente.
+
+6- As etapas de um projeto de banco de dados são especificação, onde se descreve o minimundo, análise de requisitos, onde se tem as restrições de operação, projeto conceitual, que trata das estruturas e restrições conceituais, projeto lógico, que trata das estruturas e restrições lógicas e projeto físico, que trata das estruturas e restrições físicas.
+
+7- É uma coleção de programas que permitem aos usuários criar e manter seus bancos de dados. Tem como objetivo definir, construir, manipular e compartilhar os dados.
+
+8- As propriedades de um sistema gerenciador de banco de dados são flexibilidade, múltiplas interfaces, garantia de padrões, economia de escala, backup e recuperação, restrições de acesso, restrições de integridade, disponibilidade elevada, relacionamentos complexos e tempo de desenvolvimento.
+
+9- As situações em que o uso do sistema gerenciador de banco de dados pode se mostrar inadequado são monousuário, onde não é requerido o acesso por múltiplos usuários, baixa complexidade, onde apresenta aplicações muito simples e bem definidas, requisitos rigorosos, que são aplicações de tempo real, de alta escalabilidade e sistemas embarcados com capacidade de armazenamento limitada, alta especialização, que são aplicações que demandam recursos que a generalidade oferecida pelo sistema gerenciador de banco de dados para definição e processamento de dados não suporta, custo proibitivo, que é a impossibilidade de investimento inicial significativo em hardware, software e treinamento.
+
+10- Modelo de dados é uma estrutura lógica que define o comportamento de uma determinada aplicação através da forma como os dados são armazenados, manipulados e organizados.
+
+11- Os tipos de modelos de dados, a partir do nível de abstração, são conceitual, onde o nível de abstração é alto, representativo, onde o nível de abstração é intermediário, e físico, onde o nível de abstração é baixo.
+
+12- Um esquema de banco de dados é a descrição do banco de dados, que normalmente é especificado no projeto e não muda com frequência.
+
+13- Instância de banco de dados é um conjunto de dados armazenados em determinado momento, podendo ser estado vazio, onde o esquema está especificado, porém sem dados armazenados e estado inicial, onde o banco de dados é carregado somente com os dados iniciais, sendo que esses estados são alterados a partir de qualquer alteração como inserção, remoção e modificação dos valores de determinado item.
+
+14- As vantagens de se adotar uma Arquitetura de Três Esquemas para implementar um banco de dados são que ela permite a visualização do esquema em diferentes níveis, sendo a autodescrição, suporte a múltiplas visões e independência de aplicação.
+
+15- Os níveis que existem em uma Arquitetura de de Três Esquemas são nível externo, que é as visões do usuário, nível conceitual, que é a estrutura do banco de dados, e nível interno, que é a estrutura do armazenamento físico do banco de dados.
+
+16- O Mapeamento em uma Arquitetura de Três Esquemas é a transformação de requisições e resultados entre níveis.
+
+17- A Independência de Dados é a capacidade de se alterar o esquema em um nível sem precisar alterar o esquema no nível adjacente superior, e sua vantagem para um sistema de banco de dados é a capacidade de alterar o esquema conceitual sem precisar alterar o esquema externo e alterar o esquema interno sem precisar alterar o esquema conceitual.
+
+18- É o meio usado para a realização de consultas dentro dos bancos de dados e sistemas de informação a partir do computador.
+
+19- VDL, DDL, SDL e DML.

@@ -1,0 +1,58 @@
+Especificar as seguintes consultas em SQL para recuperar os dados em um banco de dados relacional, considerando o conjunto de dados (dataset) denominado IMDB-sample disponível na calculadora RelaXLinks to an external site.:
+
+Projetar o primeiro nome e o último nome dos atores que são diretores;
+Projetar o primeiro nome e o último nome dos atores que não são diretores;
+Projetar o primeiro nome e o último nome dos atores e diretores;
+Projetar o nome dos filmes que não são dirigidos por nenhum diretor;
+Projetar primeiro nome e o último nome dos atores que não atuaram em pelo menos dois filmes;
+Projetar, por gênero e ano, o número médio de filmes com menos de dois atores atuando.
+
+Respostas
+
+Hands on 8
+1 - select actors.first_name,actors.last_name
+from actors inner join roles 
+on actors.id=roles.actor_id
+inner join movies_directors 
+on movies_directors.movie_id=roles.movie_id
+inner join directors
+on directors.id=movies_directors.director_id
+where actors.first_name=directors.first_name 
+and actors.last_name = directors.last_name
+
+2 - select actors.first_name,actors.last_name
+from actors inner join roles
+on roles.actor_id=actors.id
+inner join movies_directors
+on movies_directors.movie_id=roles.movie_id
+inner join directors
+on directors.id=movies_directors.director_id
+where actors.first_name!=directors.first_name
+and actors.last_name!=directors.last_name
+
+3 - select actors.first_name,actors.last_name,directors.first_name,directors.last_name
+from actors inner join roles
+on roles.actor_id=actors.id
+inner join movies_directors
+on movies_directors.movie_id=roles.movie_id
+inner join directors
+on directors.id=movies_directors.director_id
+
+4 - select movies.name
+from movies inner join movies_directors
+on movies.id=movies_directors.movie_id
+where movies_directors.director_id=null
+
+5 - select actors.first_name,actors.last_name, count(roles.movie_id) as quantidade
+from actors inner join roles
+on actors.id=roles.actor_id
+group by actors.first_name,actors.last_name
+
+6 - select movies_genres.genre,movies.year,avg(movies.id) as mediaFilme,count(actors.id) as quantidadeAtor
+from movies inner join roles
+on roles.movie_id=movies.id
+inner join movies_genres
+on movies_genres.movie_id=roles.movie_id
+inner join actors
+on actors.id=roles.actor_id
+group by movies_genres.genre,movies.year
