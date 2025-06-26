@@ -1,0 +1,172 @@
+import tensorflow as tf
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
+from tensorflow.keras.applications import MobileNetV2
+from tensorflow.keras.layers import Dense, GlobalAveragePooling2D, Dropout
+from tensorflow.keras.models import Model
+from tensorflow.keras.optimizers import Adam
+from tensorflow.keras.callbacks import EarlyStopping, ReduceLROnPlateau
+from tensorflow.keras.regularizers import l2
+
+import pandas as pd
+import numpy as np
+import os
+from sklearn.model_selection import train_test_split
+from sklearn.utils import resample
+import matplotlib.pyplot as plt
+
+# Configurações
+IMAGE_DIR = 'images/'
+CSV_FILE = 'descritores_nucleos.csv'
+
+# Ler CSV
+df = pd.read_csv(CSV_FILE)
+
+# Validar número de imagens
+image_files = sorted(os.listdir(IMAGE_DIR))
+assert len(image_files) == len(df), "Número de imagens e linhas no CSV não conferem!"
+
+df['filename'] = image_files
+df['label'] = df['ALN status'].astype(str)
+
+print("Distribuição das classes:\n", df['label'].value_counts())
+
+# Embaralhar
+df = df.sample(frac=1, random_state=42).reset_index(drop=True)
+
+# Dividir treino e validação
+train_df, val_df = train_test_split(
+    df,
+    test_size=0.2,
+    stratify=df['label'],
+    random_state=42
+)
+
+# ✅ Balanceamento por oversampling
+max_count = train_df['label'].value_counts().max()
+
+balanced_train_dfs = []
+for label in train_df['label'].unique():
+    df_label = train_df[train_df['label'] == label]
+    df_upsampled = resample(
+        df_label,
+        replace=True,
+        n_samples=max_count,
+        random_state=42
+    )
+    balanced_train_dfs.append(df_upsampled)
+
+train_df_balanced = pd.concat(balanced_train_dfs).sample(frac=1, random_state=42).reset_index(drop=True)
+
+print("\nAntes do balanceamento:\n", train_df['label'].value_counts())
+print("\nDepois do balanceamento:\n", train_df_balanced['label'].value_counts())
+
+# 🔥 Preprocessamento para grayscale
+def preprocess_grayscale(image):
+    image = tf.image.rgb_to_grayscale(image)
+    image = tf.image.grayscale_to_rgb(image)
+    return image
+
+# Data augmentation
+train_datagen = ImageDataGenerator(
+    rescale=1./255,
+    rotation_range=20,
+    zoom_range=0.15,
+    width_shift_range=0.1,
+    height_shift_range=0.1,
+    horizontal_flip=True,
+    fill_mode="nearest",
+    preprocessing_function=preprocess_grayscale
+)
+
+val_datagen = ImageDataGenerator(
+    rescale=1./255,
+    preprocessing_function=preprocess_grayscale
+)
+
+# Geradores
+target_size = (224, 224)
+
+train_generator = train_datagen.flow_from_dataframe(
+    dataframe=train_df_balanced,
+    directory=IMAGE_DIR,
+    x_col="filename",
+    y_col="label",
+    target_size=target_size,
+    batch_size=32,
+    class_mode="categorical",
+    shuffle=True
+)
+
+val_generator = val_datagen.flow_from_dataframe(
+    dataframe=val_df,
+    directory=IMAGE_DIR,
+    x_col="filename",
+    y_col="label",
+    target_size=target_size,
+    batch_size=32,
+    class_mode="categorical",
+    shuffle=False
+)
+
+# 🔥 Modelo
+base_model = MobileNetV2(
+    weights="imagenet",
+    include_top=False,
+    input_shape=(224, 224, 3)
+)
+
+# Fine tuning — destrava as últimas 10 camadas
+for layer in base_model.layers[:-10]:
+    layer.trainable = False
+for layer in base_model.layers[-10:]:
+    layer.trainable = True
+
+x = base_model.output
+x = GlobalAveragePooling2D()(x)
+x = Dense(128, activation='relu', kernel_regularizer=l2(0.001))(x)
+x = Dropout(0.5)(x)
+predictions = Dense(len(train_generator.class_indices), activation='softmax')(x)
+
+model = Model(inputs=base_model.input, outputs=predictions)
+
+model.compile(
+    optimizer=Adam(learning_rate=1e-5),
+    loss='categorical_crossentropy',
+    metrics=['accuracy']
+)
+
+# Callbacks
+callbacks = [
+    EarlyStopping(monitor='val_loss', patience=8, restore_best_weights=True),
+    ReduceLROnPlateau(monitor='val_loss', factor=0.2, patience=4, min_lr=1e-7)
+]
+
+# 🔥 Treinamento
+history = model.fit(
+    train_generator,
+    validation_data=val_generator,
+    epochs=30,
+    callbacks=callbacks
+)
+
+# 📊 Plots
+plt.figure(figsize=(8, 5))
+plt.plot(history.history['accuracy'], label='Treino')
+plt.plot(history.history['val_accuracy'], label='Validação')
+plt.title('Acurácia')
+plt.xlabel('Épocas')
+plt.ylabel('Acurácia')
+plt.legend()
+plt.show()
+
+plt.figure(figsize=(8, 5))
+plt.plot(history.history['loss'], label='Treino')
+plt.plot(history.history['val_loss'], label='Validação')
+plt.title('Perda')
+plt.xlabel('Épocas')
+plt.ylabel('Perda')
+plt.legend()
+plt.show()
+
+# 💾 Salvar modelo
+model.save('modelo_mobilenet_grayscale.h5')
